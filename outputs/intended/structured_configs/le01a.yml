@@ -85,6 +85,9 @@ port_channel_interfaces:
   description: server18_LINK_TO_SRV18
   type: switched
   shutdown: false
+  mode: access
+  vlans: '41'
+  spanning_tree_portfast: edge
   mlag: 6
 - name: Port-Channel7
   description: server21_LINK_TO_SRV21
@@ -158,7 +161,7 @@ ethernet_interfaces:
   peer: server18
   peer_interface: Ethernet1
   peer_type: server
-  port_profile: server_41
+  port_profile: server_v41
   description: server18_Ethernet1
   shutdown: false
   type: port-channel-member

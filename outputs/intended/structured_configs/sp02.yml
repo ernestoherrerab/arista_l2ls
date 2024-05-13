@@ -93,7 +93,7 @@ vlan_interfaces:
   tenant: acme
   description: ACME-GENERAL_40
   shutdown: false
-  ip_address: 10.40.40.3/24
+  ip_address: 10.4.40.3/24
   ip_virtual_router_addresses:
   - 10.4.40.1
   vrf: ACME-GENERAL
@@ -101,7 +101,7 @@ vlan_interfaces:
   tenant: acme
   description: ACME-GENERAL_41
   shutdown: false
-  ip_address: 10.40.41.3/24
+  ip_address: 10.4.41.3/24
   ip_virtual_router_addresses:
   - 10.4.41.1
   vrf: ACME-GENERAL

@@ -59,7 +59,7 @@ port_channel_interfaces:
 - name: Port-channel1
   description: LINK_TO_LEAF
   shutdown: false
-  ip_address: 10.4.41.119/24
+  ip_address: 10.4.40.119/24
   type: routed
   vrf: ACME
 ethernet_interfaces:

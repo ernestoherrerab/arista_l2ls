@@ -316,7 +316,7 @@ vlan 4094
 | Ethernet1 | SP01_Ethernet1 | *trunk | *40-41,50-51 | *- | *- | 1 |
 | Ethernet2 | SP02_Ethernet1 | *trunk | *40-41,50-51 | *- | *- | 1 |
 | Ethernet5 | server17_Ethernet1 | *access | *40 | *- | *- | 5 |
-| Ethernet6 | server18_Ethernet1 | *access | *- | *- | *- | 6 |
+| Ethernet6 | server18_Ethernet1 | *access | *41 | *- | *- | 6 |
 | Ethernet7 | server21_Ethernet1 | *access | *50 | *- | *- | 7 |
 | Ethernet8 | server22_Ethernet1 | *access | *51 | *- | *- | 8 |
 | Ethernet47 | MLAG_PEER_le01b_Ethernet47 | *trunk | *- | *- | *['MLAG'] | 47 |
@@ -379,7 +379,7 @@ interface Ethernet48
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
 | Port-Channel1 | SP_Po1 | switched | trunk | 40-41,50-51 | - | - | - | - | 1 | - |
 | Port-Channel5 | server17_LINK_TO_SRV17 | switched | access | 40 | - | - | - | - | 5 | - |
-| Port-Channel6 | server18_LINK_TO_SRV18 | switched | access | - | - | - | - | - | 6 | - |
+| Port-Channel6 | server18_LINK_TO_SRV18 | switched | access | 41 | - | - | - | - | 6 | - |
 | Port-Channel7 | server21_LINK_TO_SRV21 | switched | access | 50 | - | - | - | - | 7 | - |
 | Port-Channel8 | server22_LINK_TO_SRV22 | switched | access | 51 | - | - | - | - | 8 | - |
 | Port-Channel47 | MLAG_PEER_le01b_Po47 | switched | trunk | - | - | ['MLAG'] | - | - | - | - |
@@ -408,7 +408,9 @@ interface Port-Channel6
    description server18_LINK_TO_SRV18
    no shutdown
    switchport
+   switchport access vlan 41
    mlag 6
+   spanning-tree portfast
 !
 interface Port-Channel7
    description server21_LINK_TO_SRV21

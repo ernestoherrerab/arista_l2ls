@@ -292,7 +292,7 @@ interface Ethernet2
 
 | Interface | Description | Type | MLAG ID | IP Address | VRF | MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | ---- | ------- | ---------- | --- | --- | -------- | ------ | ------- |
-| Port-channel1 | LINK_TO_LEAF | routed | - | 10.4.41.119/24 | ACME | - | False | - | - |
+| Port-channel1 | LINK_TO_LEAF | routed | - | 10.4.40.119/24 | ACME | - | False | - | - |
 
 #### Port-Channel Interfaces Device Configuration
 
@@ -303,7 +303,7 @@ interface Port-channel1
    no shutdown
    no switchport
    vrf ACME
-   ip address 10.4.41.119/24
+   ip address 10.4.40.119/24
 ```
 
 ### Loopback Interfaces

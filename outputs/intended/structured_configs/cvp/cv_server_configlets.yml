@@ -77,26 +77,27 @@ cvp_configlets:
     \  switchport mode trunk\n   mlag 1\n!\ninterface Port-Channel5\n   description
     server17_LINK_TO_SRV17\n   no shutdown\n   switchport\n   switchport access vlan
     40\n   mlag 5\n   spanning-tree portfast\n!\ninterface Port-Channel6\n   description
-    server18_LINK_TO_SRV18\n   no shutdown\n   switchport\n   mlag 6\n!\ninterface
-    Port-Channel7\n   description server21_LINK_TO_SRV21\n   no shutdown\n   switchport\n
-    \  switchport access vlan 50\n   mlag 7\n   spanning-tree portfast\n!\ninterface
-    Port-Channel8\n   description server22_LINK_TO_SRV22\n   no shutdown\n   switchport\n
-    \  switchport access vlan 51\n   mlag 8\n   spanning-tree portfast\n!\ninterface
-    Port-Channel47\n   description MLAG_PEER_le01b_Po47\n   no shutdown\n   switchport\n
-    \  switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface Ethernet1\n
-    \  description SP01_Ethernet1\n   no shutdown\n   channel-group 1 mode active\n!\ninterface
-    Ethernet2\n   description SP02_Ethernet1\n   no shutdown\n   channel-group 1 mode
-    active\n!\ninterface Ethernet5\n   description server17_Ethernet1\n   no shutdown\n
-    \  channel-group 5 mode active\n!\ninterface Ethernet6\n   description server18_Ethernet1\n
-    \  no shutdown\n   channel-group 6 mode active\n!\ninterface Ethernet7\n   description
-    server21_Ethernet1\n   no shutdown\n   channel-group 7 mode active\n!\ninterface
-    Ethernet8\n   description server22_Ethernet1\n   no shutdown\n   channel-group
-    8 mode active\n!\ninterface Ethernet47\n   description MLAG_PEER_le01b_Ethernet47\n
-    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Ethernet48\n   description
-    MLAG_PEER_le01b_Ethernet48\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
-    Management1\n   description oob_management\n   no shutdown\n   ip address 192.168.0.175/24\n!\ninterface
-    Vlan4094\n   description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n
-    \  ip address 192.168.1.4/31\n!\nmlag configuration\n   domain-id le01\n   local-interface
+    server18_LINK_TO_SRV18\n   no shutdown\n   switchport\n   switchport access vlan
+    41\n   mlag 6\n   spanning-tree portfast\n!\ninterface Port-Channel7\n   description
+    server21_LINK_TO_SRV21\n   no shutdown\n   switchport\n   switchport access vlan
+    50\n   mlag 7\n   spanning-tree portfast\n!\ninterface Port-Channel8\n   description
+    server22_LINK_TO_SRV22\n   no shutdown\n   switchport\n   switchport access vlan
+    51\n   mlag 8\n   spanning-tree portfast\n!\ninterface Port-Channel47\n   description
+    MLAG_PEER_le01b_Po47\n   no shutdown\n   switchport\n   switchport mode trunk\n
+    \  switchport trunk group MLAG\n!\ninterface Ethernet1\n   description SP01_Ethernet1\n
+    \  no shutdown\n   channel-group 1 mode active\n!\ninterface Ethernet2\n   description
+    SP02_Ethernet1\n   no shutdown\n   channel-group 1 mode active\n!\ninterface Ethernet5\n
+    \  description server17_Ethernet1\n   no shutdown\n   channel-group 5 mode active\n!\ninterface
+    Ethernet6\n   description server18_Ethernet1\n   no shutdown\n   channel-group
+    6 mode active\n!\ninterface Ethernet7\n   description server21_Ethernet1\n   no
+    shutdown\n   channel-group 7 mode active\n!\ninterface Ethernet8\n   description
+    server22_Ethernet1\n   no shutdown\n   channel-group 8 mode active\n!\ninterface
+    Ethernet47\n   description MLAG_PEER_le01b_Ethernet47\n   no shutdown\n   channel-group
+    47 mode active\n!\ninterface Ethernet48\n   description MLAG_PEER_le01b_Ethernet48\n
+    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Management1\n   description
+    oob_management\n   no shutdown\n   ip address 192.168.0.175/24\n!\ninterface Vlan4094\n
+    \  description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n   ip
+    address 192.168.1.4/31\n!\nmlag configuration\n   domain-id le01\n   local-interface
     Vlan4094\n   peer-address 192.168.1.5\n   peer-link Port-Channel47\n   reload-delay
     mlag 300\n   reload-delay non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
     \                                                                                     \n#
@@ -122,26 +123,27 @@ cvp_configlets:
     \  switchport mode trunk\n   mlag 1\n!\ninterface Port-Channel5\n   description
     server17_LINK_TO_SRV17\n   no shutdown\n   switchport\n   switchport access vlan
     40\n   mlag 5\n   spanning-tree portfast\n!\ninterface Port-Channel6\n   description
-    server18_LINK_TO_SRV18\n   no shutdown\n   switchport\n   mlag 6\n!\ninterface
-    Port-Channel7\n   description server21_LINK_TO_SRV21\n   no shutdown\n   switchport\n
-    \  switchport access vlan 50\n   mlag 7\n   spanning-tree portfast\n!\ninterface
-    Port-Channel8\n   description server22_LINK_TO_SRV22\n   no shutdown\n   switchport\n
-    \  switchport access vlan 51\n   mlag 8\n   spanning-tree portfast\n!\ninterface
-    Port-Channel47\n   description MLAG_PEER_le01a_Po47\n   no shutdown\n   switchport\n
-    \  switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface Ethernet1\n
-    \  description SP01_Ethernet2\n   no shutdown\n   channel-group 1 mode active\n!\ninterface
-    Ethernet2\n   description SP02_Ethernet2\n   no shutdown\n   channel-group 1 mode
-    active\n!\ninterface Ethernet5\n   description server17_Ethernet2\n   no shutdown\n
-    \  channel-group 5 mode active\n!\ninterface Ethernet6\n   description server18_Ethernet2\n
-    \  no shutdown\n   channel-group 6 mode active\n!\ninterface Ethernet7\n   description
-    server21_Ethernet2\n   no shutdown\n   channel-group 7 mode active\n!\ninterface
-    Ethernet8\n   description server22_Ethernet2\n   no shutdown\n   channel-group
-    8 mode active\n!\ninterface Ethernet47\n   description MLAG_PEER_le01a_Ethernet47\n
-    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Ethernet48\n   description
-    MLAG_PEER_le01a_Ethernet48\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
-    Management1\n   description oob_management\n   no shutdown\n   ip address 192.168.0.176/24\n!\ninterface
-    Vlan4094\n   description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n
-    \  ip address 192.168.1.5/31\n!\nmlag configuration\n   domain-id le01\n   local-interface
+    server18_LINK_TO_SRV18\n   no shutdown\n   switchport\n   switchport access vlan
+    41\n   mlag 6\n   spanning-tree portfast\n!\ninterface Port-Channel7\n   description
+    server21_LINK_TO_SRV21\n   no shutdown\n   switchport\n   switchport access vlan
+    50\n   mlag 7\n   spanning-tree portfast\n!\ninterface Port-Channel8\n   description
+    server22_LINK_TO_SRV22\n   no shutdown\n   switchport\n   switchport access vlan
+    51\n   mlag 8\n   spanning-tree portfast\n!\ninterface Port-Channel47\n   description
+    MLAG_PEER_le01a_Po47\n   no shutdown\n   switchport\n   switchport mode trunk\n
+    \  switchport trunk group MLAG\n!\ninterface Ethernet1\n   description SP01_Ethernet2\n
+    \  no shutdown\n   channel-group 1 mode active\n!\ninterface Ethernet2\n   description
+    SP02_Ethernet2\n   no shutdown\n   channel-group 1 mode active\n!\ninterface Ethernet5\n
+    \  description server17_Ethernet2\n   no shutdown\n   channel-group 5 mode active\n!\ninterface
+    Ethernet6\n   description server18_Ethernet2\n   no shutdown\n   channel-group
+    6 mode active\n!\ninterface Ethernet7\n   description server21_Ethernet2\n   no
+    shutdown\n   channel-group 7 mode active\n!\ninterface Ethernet8\n   description
+    server22_Ethernet2\n   no shutdown\n   channel-group 8 mode active\n!\ninterface
+    Ethernet47\n   description MLAG_PEER_le01a_Ethernet47\n   no shutdown\n   channel-group
+    47 mode active\n!\ninterface Ethernet48\n   description MLAG_PEER_le01a_Ethernet48\n
+    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Management1\n   description
+    oob_management\n   no shutdown\n   ip address 192.168.0.176/24\n!\ninterface Vlan4094\n
+    \  description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n   ip
+    address 192.168.1.5/31\n!\nmlag configuration\n   domain-id le01\n   local-interface
     Vlan4094\n   peer-address 192.168.1.4\n   peer-link Port-Channel47\n   reload-delay
     mlag 300\n   reload-delay non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
     \                                                                                     \n#
@@ -165,32 +167,32 @@ cvp_configlets:
     MLAG_PEER\n   trunk group MLAG\n!\ninterface Port-Channel1\n   description SP_Po3\n
     \  no shutdown\n   switchport\n   switchport trunk allowed vlan 40-41,50-51\n
     \  switchport mode trunk\n   mlag 1\n!\ninterface Port-Channel5\n   description
-    server19_LINK_TO_SRV19\n   no shutdown\n   switchport\n   mlag 5\n!\ninterface
-    Port-Channel6\n   description server20_LINK_TO_SRV20\n   no shutdown\n   switchport\n
-    \  switchport access vlan 41\n   evpn ethernet-segment\n      identifier 0000:0000:c21d:6a08:ea1e\n
-    \     route-target import c2:1d:6a:08:ea:1e\n   lacp system-id c21d.6a08.ea1e\n
-    \  spanning-tree portfast\n!\ninterface Port-Channel7\n   description server23_LINK_TO_SRV23\n
-    \  no shutdown\n   switchport\n   switchport access vlan 50\n   mlag 7\n   spanning-tree
-    portfast\n!\ninterface Port-Channel8\n   description server24_LINK_TO_SRV24\n
-    \  no shutdown\n   switchport\n   switchport access vlan 51\n   mlag 8\n   spanning-tree
-    portfast\n!\ninterface Port-Channel47\n   description MLAG_PEER_le02b_Po47\n   no
-    shutdown\n   switchport\n   switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface
-    Ethernet1\n   description SP01_Ethernet3\n   no shutdown\n   channel-group 1 mode
-    active\n!\ninterface Ethernet2\n   description SP02_Ethernet3\n   no shutdown\n
-    \  channel-group 1 mode active\n!\ninterface Ethernet5\n   description server19_Ethernet1\n
-    \  no shutdown\n   channel-group 5 mode active\n!\ninterface Ethernet6\n   description
-    server20_Ethernet1\n   no shutdown\n   channel-group 6 mode active\n!\ninterface
-    Ethernet7\n   description server23_Ethernet1\n   no shutdown\n   channel-group
-    7 mode active\n!\ninterface Ethernet8\n   description server24_Ethernet1\n   no
-    shutdown\n   channel-group 8 mode active\n!\ninterface Ethernet47\n   description
-    MLAG_PEER_le02b_Ethernet47\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
-    Ethernet48\n   description MLAG_PEER_le02b_Ethernet48\n   no shutdown\n   channel-group
-    47 mode active\n!\ninterface Management1\n   description oob_management\n   no
-    shutdown\n   ip address 192.168.0.177/24\n!\ninterface Vlan4094\n   description
-    MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n   ip address 192.168.1.8/31\n!\nmlag
-    configuration\n   domain-id le02\n   local-interface Vlan4094\n   peer-address
-    192.168.1.9\n   peer-link Port-Channel47\n   reload-delay mlag 300\n   reload-delay
-    non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
+    server19_LINK_TO_SRV19\n   no shutdown\n   switchport\n   switchport access vlan
+    40\n   mlag 5\n   spanning-tree portfast\n!\ninterface Port-Channel6\n   description
+    server20_LINK_TO_SRV20\n   no shutdown\n   switchport\n   switchport access vlan
+    41\n   evpn ethernet-segment\n      identifier 0000:0000:c21d:6a08:ea1e\n      route-target
+    import c2:1d:6a:08:ea:1e\n   lacp system-id c21d.6a08.ea1e\n   spanning-tree portfast\n!\ninterface
+    Port-Channel7\n   description server23_LINK_TO_SRV23\n   no shutdown\n   switchport\n
+    \  switchport access vlan 50\n   mlag 7\n   spanning-tree portfast\n!\ninterface
+    Port-Channel8\n   description server24_LINK_TO_SRV24\n   no shutdown\n   switchport\n
+    \  switchport access vlan 51\n   mlag 8\n   spanning-tree portfast\n!\ninterface
+    Port-Channel47\n   description MLAG_PEER_le02b_Po47\n   no shutdown\n   switchport\n
+    \  switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface Ethernet1\n
+    \  description SP01_Ethernet3\n   no shutdown\n   channel-group 1 mode active\n!\ninterface
+    Ethernet2\n   description SP02_Ethernet3\n   no shutdown\n   channel-group 1 mode
+    active\n!\ninterface Ethernet5\n   description server19_Ethernet1\n   no shutdown\n
+    \  channel-group 5 mode active\n!\ninterface Ethernet6\n   description server20_Ethernet1\n
+    \  no shutdown\n   channel-group 6 mode active\n!\ninterface Ethernet7\n   description
+    server23_Ethernet1\n   no shutdown\n   channel-group 7 mode active\n!\ninterface
+    Ethernet8\n   description server24_Ethernet1\n   no shutdown\n   channel-group
+    8 mode active\n!\ninterface Ethernet47\n   description MLAG_PEER_le02b_Ethernet47\n
+    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Ethernet48\n   description
+    MLAG_PEER_le02b_Ethernet48\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
+    Management1\n   description oob_management\n   no shutdown\n   ip address 192.168.0.177/24\n!\ninterface
+    Vlan4094\n   description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n
+    \  ip address 192.168.1.8/31\n!\nmlag configuration\n   domain-id le02\n   local-interface
+    Vlan4094\n   peer-address 192.168.1.9\n   peer-link Port-Channel47\n   reload-delay
+    mlag 300\n   reload-delay non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
     \                                                                                     \n#
     \      Warning Notice                                                                 \n#\n#
     \      This system is restricted solely to authorized users for legitimate business\n#
@@ -212,32 +214,32 @@ cvp_configlets:
     MLAG_PEER\n   trunk group MLAG\n!\ninterface Port-Channel1\n   description SP_Po3\n
     \  no shutdown\n   switchport\n   switchport trunk allowed vlan 40-41,50-51\n
     \  switchport mode trunk\n   mlag 1\n!\ninterface Port-Channel5\n   description
-    server19_LINK_TO_SRV19\n   no shutdown\n   switchport\n   mlag 5\n!\ninterface
-    Port-Channel6\n   description server20_LINK_TO_SRV20\n   no shutdown\n   switchport\n
-    \  switchport access vlan 41\n   evpn ethernet-segment\n      identifier 0000:0000:c21d:6a08:ea1e\n
-    \     route-target import c2:1d:6a:08:ea:1e\n   lacp system-id c21d.6a08.ea1e\n
-    \  spanning-tree portfast\n!\ninterface Port-Channel7\n   description server23_LINK_TO_SRV23\n
-    \  no shutdown\n   switchport\n   switchport access vlan 50\n   mlag 7\n   spanning-tree
-    portfast\n!\ninterface Port-Channel8\n   description server24_LINK_TO_SRV24\n
-    \  no shutdown\n   switchport\n   switchport access vlan 51\n   mlag 8\n   spanning-tree
-    portfast\n!\ninterface Port-Channel47\n   description MLAG_PEER_le02a_Po47\n   no
-    shutdown\n   switchport\n   switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface
-    Ethernet1\n   description SP01_Ethernet4\n   no shutdown\n   channel-group 1 mode
-    active\n!\ninterface Ethernet2\n   description SP02_Ethernet4\n   no shutdown\n
-    \  channel-group 1 mode active\n!\ninterface Ethernet5\n   description server19_Ethernet2\n
-    \  no shutdown\n   channel-group 5 mode active\n!\ninterface Ethernet6\n   description
-    server20_Ethernet2\n   no shutdown\n   channel-group 6 mode active\n!\ninterface
-    Ethernet7\n   description server23_Ethernet2\n   no shutdown\n   channel-group
-    7 mode active\n!\ninterface Ethernet8\n   description server24_Ethernet2\n   no
-    shutdown\n   channel-group 8 mode active\n!\ninterface Ethernet47\n   description
-    MLAG_PEER_le02a_Ethernet47\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
-    Ethernet48\n   description MLAG_PEER_le02a_Ethernet48\n   no shutdown\n   channel-group
-    47 mode active\n!\ninterface Management1\n   description oob_management\n   no
-    shutdown\n   ip address 192.168.0.178/24\n!\ninterface Vlan4094\n   description
-    MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n   ip address 192.168.1.9/31\n!\nmlag
-    configuration\n   domain-id le02\n   local-interface Vlan4094\n   peer-address
-    192.168.1.8\n   peer-link Port-Channel47\n   reload-delay mlag 300\n   reload-delay
-    non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
+    server19_LINK_TO_SRV19\n   no shutdown\n   switchport\n   switchport access vlan
+    40\n   mlag 5\n   spanning-tree portfast\n!\ninterface Port-Channel6\n   description
+    server20_LINK_TO_SRV20\n   no shutdown\n   switchport\n   switchport access vlan
+    41\n   evpn ethernet-segment\n      identifier 0000:0000:c21d:6a08:ea1e\n      route-target
+    import c2:1d:6a:08:ea:1e\n   lacp system-id c21d.6a08.ea1e\n   spanning-tree portfast\n!\ninterface
+    Port-Channel7\n   description server23_LINK_TO_SRV23\n   no shutdown\n   switchport\n
+    \  switchport access vlan 50\n   mlag 7\n   spanning-tree portfast\n!\ninterface
+    Port-Channel8\n   description server24_LINK_TO_SRV24\n   no shutdown\n   switchport\n
+    \  switchport access vlan 51\n   mlag 8\n   spanning-tree portfast\n!\ninterface
+    Port-Channel47\n   description MLAG_PEER_le02a_Po47\n   no shutdown\n   switchport\n
+    \  switchport mode trunk\n   switchport trunk group MLAG\n!\ninterface Ethernet1\n
+    \  description SP01_Ethernet4\n   no shutdown\n   channel-group 1 mode active\n!\ninterface
+    Ethernet2\n   description SP02_Ethernet4\n   no shutdown\n   channel-group 1 mode
+    active\n!\ninterface Ethernet5\n   description server19_Ethernet2\n   no shutdown\n
+    \  channel-group 5 mode active\n!\ninterface Ethernet6\n   description server20_Ethernet2\n
+    \  no shutdown\n   channel-group 6 mode active\n!\ninterface Ethernet7\n   description
+    server23_Ethernet2\n   no shutdown\n   channel-group 7 mode active\n!\ninterface
+    Ethernet8\n   description server24_Ethernet2\n   no shutdown\n   channel-group
+    8 mode active\n!\ninterface Ethernet47\n   description MLAG_PEER_le02a_Ethernet47\n
+    \  no shutdown\n   channel-group 47 mode active\n!\ninterface Ethernet48\n   description
+    MLAG_PEER_le02a_Ethernet48\n   no shutdown\n   channel-group 47 mode active\n!\ninterface
+    Management1\n   description oob_management\n   no shutdown\n   ip address 192.168.0.178/24\n!\ninterface
+    Vlan4094\n   description MLAG_PEER\n   no shutdown\n   mtu 1500\n   no autostate\n
+    \  ip address 192.168.1.9/31\n!\nmlag configuration\n   domain-id le02\n   local-interface
+    Vlan4094\n   peer-address 192.168.1.8\n   peer-link Port-Channel47\n   reload-delay
+    mlag 300\n   reload-delay non-mlag 330\n!\nbanner motd\n#########################################################################################\n#
     \                                                                                     \n#
     \      Warning Notice                                                                 \n#\n#
     \      This system is restricted solely to authorized users for legitimate business\n#
@@ -306,7 +308,7 @@ cvp_configlets:
     cvpadmin privilege 15 role network-admin secret sha512 $6$VkEn9bBEs2QqmMw7$tp1RpJKwlxGZZYnUSSvDtT8Jnk23Liow9QzRXiU6yNBvEFU9097mhUb4DZboVDA3NYYIqbnGzUNpcaW2SRXKi/\n!\nclock
     timezone CET\n!\nvrf instance ACME\n   description ACME VRF\n!\ninterface Port-channel1\n
     \  description LINK_TO_LEAF\n   no shutdown\n   no switchport\n   vrf ACME\n   ip
-    address 10.4.41.119/24\n!\ninterface Ethernet1\n   description LINK_TO_LEAF\n
+    address 10.4.40.119/24\n!\ninterface Ethernet1\n   description LINK_TO_LEAF\n
     \  no shutdown\n   channel-group 1 mode active\n!\ninterface Ethernet2\n   description
     LINK_TO_SWEX_LEAF\n   no shutdown\n   channel-group 1 mode active\n!\ninterface
     Loopback0\n   description Router_ID\n   no shutdown\n   ip address 10.248.0.19/32\n!\ninterface
@@ -543,9 +545,9 @@ cvp_configlets:
     Loopback0\n   description Router_ID\n   no shutdown\n   ip address 10.0.2.2/32\n!\ninterface
     Management1\n   description oob_management\n   no shutdown\n   ip address 192.168.0.174/24\n!\ninterface
     Vlan40\n   description ACME-GENERAL_40\n   no shutdown\n   vrf ACME-GENERAL\n
-    \  ip address 10.40.40.3/24\n   ip virtual-router address 10.4.40.1\n!\ninterface
+    \  ip address 10.4.40.3/24\n   ip virtual-router address 10.4.40.1\n!\ninterface
     Vlan41\n   description ACME-GENERAL_41\n   no shutdown\n   vrf ACME-GENERAL\n
-    \  ip address 10.40.41.3/24\n   ip virtual-router address 10.4.41.1\n!\ninterface
+    \  ip address 10.4.41.3/24\n   ip virtual-router address 10.4.41.1\n!\ninterface
     Vlan50\n   description ACME-LAB_50\n   no shutdown\n   vrf ACME-LAB\n   ip address
     10.5.50.3/24\n   ip virtual-router address 10.5.50.1\n!\ninterface Vlan51\n   description
     ACME-LAB_51\n   no shutdown\n   vrf ACME-LAB\n   ip address 10.5.51.3/24\n   ip

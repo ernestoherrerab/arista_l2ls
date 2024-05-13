@@ -33,7 +33,7 @@ servers:
       - endpoint_ports: [Ethernet1, Ethernet2]
         switch_ports: [Ethernet6, Ethernet6]
         switches: [ le01a, le01b ]
-        profile: server_41
+        profile: server_v41
         port_channel:
           description: LINK_TO_SRV18
           mode: active
@@ -42,7 +42,7 @@ servers:
       - endpoint_ports: [Ethernet1, Ethernet2]
         switch_ports: [ Ethernet5, Ethernet5 ]
         switches: [ le02a, le02b ]
-        profile: server_40
+        profile: server_v40
         port_channel:
           description: LINK_TO_SRV19
           mode: active

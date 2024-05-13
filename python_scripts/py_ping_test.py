@@ -50,11 +50,10 @@ class Device:
             self.connection.close()
 
 class DeviceEOS(Device):
-    def ping(self, remote_server, source_vrf):
+    def ping(self, remote_server):
         """Send commands and structure them in a dictionary"""
         self.remote_server = remote_server 
-        self.source_vrf = source_vrf
-        command = f"ping vrf {self.source_vrf} {self.remote_server} repeat 3"
+        command = f"ping vrf ACME {self.remote_server} repeat 3"
 
         try:
             response = self.connection.send_command(command)
@@ -69,7 +68,6 @@ def main():
     inventory_yml_file = Path("hosts.yml")
     inventory_dict = load_yaml(inventory_yml_file)
     ping_source = sys.argv[1]
-    ping_source_vrf = inventory_dict["all"]["children"]["acme_fabric"]["children"]["servers"]["hosts"][ping_source]["vars"]["srv_vrf"]
     server = DeviceEOS(ping_source)
     server.connect()
     result = {}
@@ -77,7 +75,7 @@ def main():
     for hostname in inventory_dict["all"]["children"]["acme_fabric"]["children"]["servers"]["hosts"]:
         server_ip = inventory_dict["all"]["children"]["acme_fabric"]["children"]["servers"]["hosts"][hostname]["vars"]["srv_ip"]
         server_ip = server_ip.split('/')[0]
-        server_ping = server.ping(server_ip, ping_source_vrf )
+        server_ping = server.ping(server_ip)
         ping_result = re.search(r'(\d+)% packet loss', server_ping)
         packet_loss = ping_result.group(1)
         if packet_loss == "0":

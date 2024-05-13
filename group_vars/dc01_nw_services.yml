@@ -32,7 +32,7 @@ tenants:
               - node: sp01
                 ip_address: 10.4.40.2/24
               - node: sp02
-                ip_address: 10.40.40.3/24
+                ip_address: 10.4.40.3/24
           - id: 41
             name: 'ACME-GENERAL_41'
             enabled: true
@@ -42,7 +42,7 @@ tenants:
               - node: sp01
                 ip_address: 10.4.41.2/24
               - node: sp02
-                ip_address: 10.40.41.3/24
+                ip_address: 10.4.41.3/24
       - name: ACME-LAB
         mlag_ibgp_peering_vlan: 4002
         svis:

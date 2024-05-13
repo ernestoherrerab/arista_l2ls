@@ -315,7 +315,7 @@ vlan 4094
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
 | Ethernet1 | SP01_Ethernet4 | *trunk | *40-41,50-51 | *- | *- | 1 |
 | Ethernet2 | SP02_Ethernet4 | *trunk | *40-41,50-51 | *- | *- | 1 |
-| Ethernet5 | server19_Ethernet2 | *access | *- | *- | *- | 5 |
+| Ethernet5 | server19_Ethernet2 | *access | *40 | *- | *- | 5 |
 | Ethernet6 | server20_Ethernet2 | *access | *41 | *- | *- | 6 |
 | Ethernet7 | server23_Ethernet2 | *access | *50 | *- | *- | 7 |
 | Ethernet8 | server24_Ethernet2 | *access | *51 | *- | *- | 8 |
@@ -378,7 +378,7 @@ interface Ethernet48
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
 | Port-Channel1 | SP_Po3 | switched | trunk | 40-41,50-51 | - | - | - | - | 1 | - |
-| Port-Channel5 | server19_LINK_TO_SRV19 | switched | access | - | - | - | - | - | 5 | - |
+| Port-Channel5 | server19_LINK_TO_SRV19 | switched | access | 40 | - | - | - | - | 5 | - |
 | Port-Channel6 | server20_LINK_TO_SRV20 | switched | access | 41 | - | - | - | - | - | 0000:0000:c21d:6a08:ea1e |
 | Port-Channel7 | server23_LINK_TO_SRV23 | switched | access | 50 | - | - | - | - | 7 | - |
 | Port-Channel8 | server24_LINK_TO_SRV24 | switched | access | 51 | - | - | - | - | 8 | - |
@@ -408,7 +408,9 @@ interface Port-Channel5
    description server19_LINK_TO_SRV19
    no shutdown
    switchport
+   switchport access vlan 40
    mlag 5
+   spanning-tree portfast
 !
 interface Port-Channel6
    description server20_LINK_TO_SRV20
