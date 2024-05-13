@@ -1,0 +1,211 @@
+hostname: le02a
+is_deployed: true
+service_routing_protocols_model: multi-agent
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 10.255.0.2
+  vrf: default
+local_users:
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$VkEn9bBEs2QqmMw7$tp1RpJKwlxGZZYnUSSvDtT8Jnk23Liow9QzRXiU6yNBvEFU9097mhUb4DZboVDA3NYYIqbnGzUNpcaW2SRXKi/
+clock:
+  timezone: CET
+vrfs:
+- name: default
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: default
+  ip_address: 192.168.0.177/24
+  gateway: null
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: default
+  enable_https: true
+spanning_tree:
+  no_spanning_tree_vlan: '4094'
+vlans:
+- id: 4094
+  tenant: system
+  name: MLAG_PEER
+  trunk_groups:
+  - MLAG
+- id: 40
+  name: ACME-GENERAL_40
+  tenant: acme
+- id: 41
+  name: ACME-GENERAL_41
+  tenant: acme
+- id: 50
+  name: ACME-LAB_50
+  tenant: acme
+- id: 51
+  name: ACME-LAB_51
+  tenant: acme
+vlan_interfaces:
+- name: Vlan4094
+  description: MLAG_PEER
+  shutdown: false
+  ip_address: 192.168.1.8/31
+  no_autostate: true
+  mtu: 1500
+port_channel_interfaces:
+- name: Port-Channel47
+  description: MLAG_PEER_le02b_Po47
+  type: switched
+  shutdown: false
+  mode: trunk
+  trunk_groups:
+  - MLAG
+- name: Port-Channel1
+  description: SP_Po3
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: 40-41,50-51
+  mlag: 1
+- name: Port-Channel5
+  description: server19_LINK_TO_SRV19
+  type: switched
+  shutdown: false
+  mlag: 5
+- name: Port-Channel6
+  description: server20_LINK_TO_SRV20
+  type: switched
+  shutdown: false
+  mode: access
+  vlans: '41'
+  spanning_tree_portfast: edge
+  evpn_ethernet_segment:
+    identifier: 0000:0000:c21d:6a08:ea1e
+    route_target: c2:1d:6a:08:ea:1e
+  lacp_id: c21d.6a08.ea1e
+- name: Port-Channel7
+  description: server23_LINK_TO_SRV23
+  type: switched
+  shutdown: false
+  mode: access
+  vlans: '50'
+  spanning_tree_portfast: edge
+  mlag: 7
+- name: Port-Channel8
+  description: server24_LINK_TO_SRV24
+  type: switched
+  shutdown: false
+  mode: access
+  vlans: '51'
+  spanning_tree_portfast: edge
+  mlag: 8
+ethernet_interfaces:
+- name: Ethernet47
+  peer: le02b
+  peer_interface: Ethernet47
+  peer_type: mlag_peer
+  description: MLAG_PEER_le02b_Ethernet47
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 47
+    mode: active
+- name: Ethernet48
+  peer: le02b
+  peer_interface: Ethernet48
+  peer_type: mlag_peer
+  description: MLAG_PEER_le02b_Ethernet48
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 47
+    mode: active
+- name: Ethernet1
+  peer: sp01
+  peer_interface: Ethernet3
+  peer_type: l3spine
+  description: SP01_Ethernet3
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet2
+  peer: sp02
+  peer_interface: Ethernet3
+  peer_type: l3spine
+  description: SP02_Ethernet3
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet5
+  peer: server19
+  peer_interface: Ethernet1
+  peer_type: server
+  port_profile: server_40
+  description: server19_Ethernet1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 5
+    mode: active
+- name: Ethernet6
+  peer: server20
+  peer_interface: Ethernet1
+  peer_type: server
+  port_profile: server_v41
+  description: server20_Ethernet1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 6
+    mode: active
+- name: Ethernet7
+  peer: server23
+  peer_interface: Ethernet1
+  peer_type: server
+  port_profile: server_v50
+  description: server23_Ethernet1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 7
+    mode: active
+- name: Ethernet8
+  peer: server24
+  peer_interface: Ethernet1
+  peer_type: server
+  port_profile: server_v51
+  description: server24_Ethernet1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 8
+    mode: active
+mlag_configuration:
+  domain_id: le02
+  local_interface: Vlan4094
+  peer_address: 192.168.1.9
+  peer_link: Port-Channel47
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+ip_igmp_snooping:
+  globally_enabled: true
+metadata:
+  platform: VEOS-LAB
+dns_domain: acme.com
+domain_list:
+- acme.com
+banners:
+  motd: "#########################################################################################\n#                                                                                      \n#
+    \      Warning Notice                                                                 \n#\n#       This system is restricted solely
+    to authorized users for legitimate business\n#       purposes only. The actual or attempted unauthorized access, use, or modification\n#
+    \      of this system is strictly prohibited.\n#\n#########################################################################################\nEOF\n"

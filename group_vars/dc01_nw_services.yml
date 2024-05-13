@@ -1,0 +1,68 @@
+### NETWORK SERVICES DEFINITION ###
+tenants:
+  - name: acme
+    enable_mlag_ibgp_peering_vrfs: true
+    l2vlans:
+      - id: 40
+        name: "ACME-GENERAL_40"
+        tags:
+          - common
+      - id: 41
+        name: "ACME-GENERAL_41"
+        tags:
+          - common
+      - id: 50
+        name: "ACME-LAB_50"
+        tags:
+          - common
+      - id: 51
+        name: "ACME-LAB_51"
+        tags:
+          - common
+    vrfs:
+      - name: ACME-GENERAL
+        mlag_ibgp_peering_vlan: 4001
+        svis:
+          - id: 40
+            name: 'ACME-GENERAL_40'
+            enabled: true
+            ip_virtual_router_addresses:
+              - 10.4.40.1
+            nodes:
+              - node: sp01
+                ip_address: 10.4.40.2/24
+              - node: sp02
+                ip_address: 10.40.40.3/24
+          - id: 41
+            name: 'ACME-GENERAL_41'
+            enabled: true
+            ip_virtual_router_addresses:
+              - 10.4.41.1
+            nodes:
+              - node: sp01
+                ip_address: 10.4.41.2/24
+              - node: sp02
+                ip_address: 10.40.41.3/24
+      - name: ACME-LAB
+        mlag_ibgp_peering_vlan: 4002
+        svis:
+          - id: 50
+            name: 'ACME-LAB_50'
+            enabled: true
+            ip_virtual_router_addresses:
+              - 10.5.50.1
+            nodes:
+              - node: sp01
+                ip_address: 10.5.50.2/24
+              - node: sp02
+                ip_address: 10.5.50.3/24
+          - id: 51
+            name: 'ACME-LAB_51'
+            enabled: true
+            ip_virtual_router_addresses:
+              - 10.5.51.1
+            nodes:
+              - node: sp01
+                ip_address: 10.5.51.2/24
+              - node: sp02
+                ip_address: 10.5.51.3/24

@@ -1,0 +1,123 @@
+hostname: bl01b
+is_deployed: true
+service_routing_protocols_model: multi-agent
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 10.255.0.2
+  vrf: default
+local_users:
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$VkEn9bBEs2QqmMw7$tp1RpJKwlxGZZYnUSSvDtT8Jnk23Liow9QzRXiU6yNBvEFU9097mhUb4DZboVDA3NYYIqbnGzUNpcaW2SRXKi/
+clock:
+  timezone: CET
+vrfs:
+- name: default
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: default
+  ip_address: 192.168.0.180/24
+  gateway: null
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: default
+  enable_https: true
+spanning_tree:
+  no_spanning_tree_vlan: '4094'
+vlans:
+- id: 4094
+  tenant: system
+  name: MLAG_PEER
+  trunk_groups:
+  - MLAG
+vlan_interfaces:
+- name: Vlan4094
+  description: MLAG_PEER
+  shutdown: false
+  ip_address: 192.168.1.13/31
+  no_autostate: true
+  mtu: 1500
+port_channel_interfaces:
+- name: Port-Channel47
+  description: MLAG_PEER_bl01a_Po47
+  type: switched
+  shutdown: false
+  mode: trunk
+  trunk_groups:
+  - MLAG
+- name: Port-Channel1
+  description: SP_Po5
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: none
+  mlag: 1
+ethernet_interfaces:
+- name: Ethernet47
+  peer: bl01a
+  peer_interface: Ethernet47
+  peer_type: mlag_peer
+  description: MLAG_PEER_bl01a_Ethernet47
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 47
+    mode: active
+- name: Ethernet48
+  peer: bl01a
+  peer_interface: Ethernet48
+  peer_type: mlag_peer
+  description: MLAG_PEER_bl01a_Ethernet48
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 47
+    mode: active
+- name: Ethernet1
+  peer: sp01
+  peer_interface: Ethernet6
+  peer_type: l3spine
+  description: SP01_Ethernet6
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet2
+  peer: sp02
+  peer_interface: Ethernet6
+  peer_type: l3spine
+  description: SP02_Ethernet6
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+mlag_configuration:
+  domain_id: bl01
+  local_interface: Vlan4094
+  peer_address: 192.168.1.12
+  peer_link: Port-Channel47
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+ip_igmp_snooping:
+  globally_enabled: true
+metadata:
+  platform: VEOS-LAB
+dns_domain: acme.com
+domain_list:
+- acme.com
+banners:
+  motd: "#########################################################################################\n#                                                                                      \n#
+    \      Warning Notice                                                                 \n#\n#       This system is restricted solely
+    to authorized users for legitimate business\n#       purposes only. The actual or attempted unauthorized access, use, or modification\n#
+    \      of this system is strictly prohibited.\n#\n#########################################################################################\nEOF\n"

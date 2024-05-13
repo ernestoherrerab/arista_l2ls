@@ -1,0 +1,83 @@
+hostname: server20
+is_deployed: true
+service_routing_protocols_model: ribd
+ip_routing: true
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 10.255.0.2
+  vrf: default
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 4096
+local_users:
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$VkEn9bBEs2QqmMw7$tp1RpJKwlxGZZYnUSSvDtT8Jnk23Liow9QzRXiU6yNBvEFU9097mhUb4DZboVDA3NYYIqbnGzUNpcaW2SRXKi/
+clock:
+  timezone: CET
+vrfs:
+- name: ACME
+  description: ACME VRF
+  ip_routing: true
+- name: default
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: default
+  ip_address: 192.168.0.158/24
+  gateway: null
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: default
+  enable_https: true
+loopback_interfaces:
+- name: Loopback0
+  description: Router_ID
+  shutdown: false
+  ip_address: 10.248.0.20/32
+metadata:
+  platform: vEOS-LAB
+dns_domain: acme.com
+domain_list:
+- acme.com
+banners:
+  motd: "#########################################################################################\n#                                                                                      \n#
+    \      Warning Notice                                                                 \n#\n#       This system is restricted solely
+    to authorized users for legitimate business\n#       purposes only. The actual or attempted unauthorized access, use, or modification\n#
+    \      of this system is strictly prohibited.\n#\n#########################################################################################\nEOF\n"
+port_channel_interfaces:
+- name: Port-channel1
+  description: LINK_TO_LEAF
+  shutdown: false
+  ip_address: 10.4.41.120/24
+  type: routed
+  vrf: ACME
+ethernet_interfaces:
+- name: Ethernet1
+  description: LINK_TO_LEAF
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet2
+  description: LINK_TO_SWEX_LEAF
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+static_routes:
+- destination_address_prefix: 0.0.0.0/0
+  vrf: ACME
+  gateway: 10.4.41.1

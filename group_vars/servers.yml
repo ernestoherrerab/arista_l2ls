@@ -1,0 +1,40 @@
+### GENERAL
+is_deployed: true
+
+### TEMPLATE
+eos_designs_custom_templates:
+  - template: ../templates/server_structured.j2
+    options:
+      list_merge: prepend
+      strip_empty_keys: false
+
+server:
+  defaults:
+    loopback_ipv4_pool: 10.248.0.0/24
+    platform: vEOS-LAB
+    spanning_tree_mode: mstp
+  nodes:
+    - name: server17
+      id: 17
+      mgmt_ip: 192.168.0.155/24
+    - name: server18
+      id: 18
+      mgmt_ip: 192.168.0.156/24
+    - name: server19
+      id: 19
+      mgmt_ip: 192.168.0.157/24
+    - name: server20
+      id: 20
+      mgmt_ip: 192.168.0.158/24
+    - name: server21
+      id: 21
+      mgmt_ip: 192.168.0.159/24
+    - name: server22
+      id: 22
+      mgmt_ip: 192.168.0.160/24
+    - name: server23
+      id: 23
+      mgmt_ip: 192.168.0.161/24
+    - name: server24
+      id: 24
+      mgmt_ip: 192.168.0.162/24

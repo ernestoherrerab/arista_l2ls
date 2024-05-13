@@ -1,0 +1,110 @@
+### GENERAL ###
+### MUST MATCH HOSTS FILE HIERARCHY
+design:
+  type: l2ls
+fabric_name: acme_fabric
+p2p_uplinks_mtu: 1500
+
+### PLATFORM DEFINITIONS ###
+### DEFAULT VALUES FOR SPECIFIC PLATFORMS ###
+### IF NO DEFAULT VALUES ARE CHANGED; NO NEED TO BE DEFINED ###
+platform_settings:
+  - feature_support:
+      bgp_update_wait_for_convergence: false
+      bgp_update_wait_install: false
+      interface_storm_control: false
+      queue_monitor_length_notify: false
+    platforms:
+      - VEOS
+      - VEOS-LAB
+      - vEOS
+      - vEOS-lab
+    reload_delay:
+      mlag: 300
+      non_mlag: 330
+
+### CLI CONFIG GEN ###
+custom_structured_configuration_prefix: [ acme_fabric_, acme_bl_]
+custom_structured_configuration_list_merge: append
+
+### LOCAL USERS ###
+aaa_authentication:
+  policies:
+    local:
+      allow_nopassword: true
+aaa_authorization:
+  exec:
+    default: local
+local_users:
+  cvpadmin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$VkEn9bBEs2QqmMw7$tp1RpJKwlxGZZYnUSSvDtT8Jnk23Liow9QzRXiU6yNBvEFU9097mhUb4DZboVDA3NYYIqbnGzUNpcaW2SRXKi/
+
+### TERMINATTR DAEMON
+daemon_terminattr:
+  cvaddrs: [192.168.0.5:9910]
+  cvauth: 
+    method: token
+    token_file: /tmp/token
+  cvvrf: default
+  smashexcludes: ale,flexCounter,hardware,kni,pulse,strata
+  ingestexclude: /Sysdb/cell/1/agent,/Sysdb/cell/2/agent
+
+### MANAGEMENT INTERFACE ###
+mgmt_vrf_routing: false
+mgmt_interface_vrf: default
+
+### DNS ###
+acme_fabric_dns_domain: acme.com
+name_servers: 
+  - 10.255.0.2
+acme_fabric_domain_list:
+  - acme.com
+
+### NTP ###
+timezone: 'CET'
+
+### BANNER ###
+acme_fabric_banners:
+  motd: |
+    #########################################################################################
+    #                                                                                      
+    #       Warning Notice                                                                 
+    #
+    #       This system is restricted solely to authorized users for legitimate business
+    #       purposes only. The actual or attempted unauthorized access, use, or modification
+    #       of this system is strictly prohibited.
+    #
+    #########################################################################################
+    EOF
+
+### ENDPOINT DEFINITIONS ###
+connected_endpoints_keys:
+  servers:
+    type: server
+
+### NODES ###
+### BELOW ARE DEFAULT VALUES - THEY ONLY NEED TO BE DEFINED IF YOU DEFINE A CUSTOM CONNECTED ENDPOINT (SERVER ABOVE)
+node_type_keys:
+  - key: l3spine
+    type: l3spine
+    connected_endpoints: true
+    default_overlay_routing_protocol: none
+    default_underlay_routing_protocol: none
+    mlag_support: true
+    network_services:
+      l2: true
+      l3: true
+  - key: leaf
+    type: leaf
+    connected_endpoints: true
+    mlag_support: true
+    network_services:
+      l2: true
+    underlay_router: false
+    uplink_type: port-channel
+  - key: server
+    type: server
+    default_underlay_routing_protocol: none
+    default_overlay_routing_protocol: none

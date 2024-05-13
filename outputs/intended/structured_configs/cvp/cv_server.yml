@@ -1,0 +1,77 @@
+---
+cvp_devices:
+  - fqdn: bl01a
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_bl01a
+  - fqdn: bl01b
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_bl01b
+  - fqdn: le01a
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_le01a
+  - fqdn: le01b
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_le01b
+  - fqdn: le02a
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_le02a
+  - fqdn: le02b
+    parentContainerName: dc01_leaf
+    configlets:
+      - acme_le02b
+  - fqdn: server17
+    parentContainerName: servers
+    configlets:
+      - acme_server17
+  - fqdn: server18
+    parentContainerName: servers
+    configlets:
+      - acme_server18
+  - fqdn: server19
+    parentContainerName: servers
+    configlets:
+      - acme_server19
+  - fqdn: server20
+    parentContainerName: servers
+    configlets:
+      - acme_server20
+  - fqdn: server21
+    parentContainerName: servers
+    configlets:
+      - acme_server21
+  - fqdn: server22
+    parentContainerName: servers
+    configlets:
+      - acme_server22
+  - fqdn: server23
+    parentContainerName: servers
+    configlets:
+      - acme_server23
+  - fqdn: server24
+    parentContainerName: servers
+    configlets:
+      - acme_server24
+  - fqdn: sp01
+    parentContainerName: dc01_spine
+    configlets:
+      - acme_sp01
+  - fqdn: sp02
+    parentContainerName: dc01_spine
+    configlets:
+      - acme_sp02
+cvp_containers:
+  acme_fabric:
+    parentContainerName: Tenant
+  dc01:
+    parentContainerName: acme_fabric
+  dc01_leaf:
+    parentContainerName: dc01
+  dc01_spine:
+    parentContainerName: dc01
+  servers:
+    parentContainerName: acme_fabric

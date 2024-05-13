@@ -1,0 +1,2 @@
+root_dir: '{{ inventory_dir }}/outputs'
+  

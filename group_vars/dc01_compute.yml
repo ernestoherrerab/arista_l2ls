@@ -1,0 +1,95 @@
+### PORT PROFILES ###
+port_profiles:
+  - profile: server_v40
+    mode: access
+    vlans: '40'
+    spanning_tree_portfast: edge 
+  - profile: server_v41
+    mode: access
+    vlans: '41'
+    spanning_tree_portfast: edge 
+  - profile: server_v50
+    mode: access
+    vlans: '50'
+    spanning_tree_portfast: edge 
+  - profile: server_v51
+    mode: access
+    vlans: '51'
+    spanning_tree_portfast: edge 
+
+### SERVERS ###
+servers:
+  - name: server17
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet5, Ethernet5]
+        switches: [ le01a, le01b ]
+        profile: server_v40
+        port_channel:
+          description: LINK_TO_SRV17
+          mode: active
+  - name: server18
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet6, Ethernet6]
+        switches: [ le01a, le01b ]
+        profile: server_41
+        port_channel:
+          description: LINK_TO_SRV18
+          mode: active
+  - name: server19
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [ Ethernet5, Ethernet5 ]
+        switches: [ le02a, le02b ]
+        profile: server_40
+        port_channel:
+          description: LINK_TO_SRV19
+          mode: active
+  - name: server20
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet6, Ethernet6]
+        switches: [ le02a, le02b ]
+        profile: server_v41
+        port_channel:
+          description: LINK_TO_SRV20
+          mode: active
+        ethernet_segment:
+          short_esi: auto
+  - name: server21
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet7, Ethernet7]
+        switches: [ le01a, le01b ]
+        profile: server_v50
+        port_channel:
+          description: LINK_TO_SRV21
+          mode: active
+  - name: server22
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet8, Ethernet8]
+        switches: [ le01a, le01b ]
+        profile: server_v51
+        port_channel:
+          description: LINK_TO_SRV22
+          mode: active
+  - name: server23
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet7, Ethernet7]
+        switches: [ le02a, le02b ]
+        profile: server_v50
+        port_channel:
+          description: LINK_TO_SRV23
+          mode: active
+  - name: server24
+    adapters:
+      - endpoint_ports: [Ethernet1, Ethernet2]
+        switch_ports: [Ethernet8, Ethernet8]
+        switches: [ le02a, le02b ]
+        profile: server_v51
+        port_channel:
+          description: LINK_TO_SRV24
+          mode: active
